@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom';
 
-import Info from "../components/Info.jsx";
+import {Navbar, Info} from "../components";
 
 const Detail = () => {
 	return (
 		<section>
-			<h1>Detalles</h1>
-			<Link to="/home">Volver a home</Link>
+			<div>
+				<Navbar />
+			</div>
 			<Info />
 		</section>
 	)

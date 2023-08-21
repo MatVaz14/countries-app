@@ -1,6 +1,9 @@
 import { useDispatch } from "react-redux";
 import { getCountries,filterContinent,filterPopulation, filterAlph } from "../redux/action.js";
 
+import styleFilter from "./styles/Filter.css";
+import Search from "./Search.jsx";
+
 const Filter = () => {
 
 	const dispatch = useDispatch();
@@ -20,9 +23,19 @@ const Filter = () => {
 	}
 
 	return (
-		<div>
-			<button onClick={() => dispatch((getCountries()))}>Restablecer</button>
-			<select onChange={handleChange} name="continent">
+		<div className="container-filter">
+			<div className="container-rest-search">
+				<div onClick={() => dispatch((getCountries()))} className="bg-linear style-btn-rest">
+					<div onClick={() => dispatch((getCountries()))} className="bg-primary btn-rest">
+						<span onClick={() => dispatch((getCountries()))}>Restablecer</span>
+					</div>
+					</div>
+				<div className="search-mobile">
+					<Search />
+				</div>
+			</div>
+			<div className="container-select">
+				<select onChange={handleChange} name="continent">
 				<option defaultValue="continent" value="continent">Continente</option>
 				<option value="North America">America del Norte</option>
 				<option value="South America">America del Sur</option>
@@ -42,6 +55,7 @@ const Filter = () => {
 				<option value="a_z">A- Z</option>
 				<option value="z_a">Z- A</option>
 			</select>
+			</div>
 		</div>
 	)
 }

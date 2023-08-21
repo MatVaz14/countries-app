@@ -1,11 +1,14 @@
 import { Link } from 'react-router-dom';
 
 import Form from "../components/Form.jsx";
+import {Navbar} from "../components";
 
 const Create = () => {
 	return (
 		<section>
-			<Link to="/home">Volver</Link>
+			<div>
+				<Navbar />
+			</div>
 			<div>
 				<Form />
 			</div>

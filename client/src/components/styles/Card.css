@@ -1,0 +1,16 @@
+.bg-card {
+	transition: .5s;
+	margin: 8px;
+	width: 280px;
+	height: 200px;
+	border-radius: 20px;
+}
+.bg-card:hover {
+	transition: .3s;
+	transform: scale(1.1);
+}
+.bg-card img {
+	width: 100%;
+	height: 100%;
+	border-radius: 20px;
+}

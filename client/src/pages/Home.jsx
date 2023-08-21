@@ -1,6 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { Link } from 'react-router-dom';
-import { Filter } from "../components";
+import { Navbar, Filter } from "../components";
 
 const AllCards = lazy(() => import('../components/AllCards.jsx'));
 
@@ -8,8 +8,7 @@ const Home = () => {
 	return (
 		<section>
 			<div>
-				Navbar
-				<Link to="/create">Crear Actividad</Link>
+				<Navbar />
 			<div>
 				<Filter />
 			</div>

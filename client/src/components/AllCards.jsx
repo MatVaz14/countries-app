@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getCountries } from "../redux/action";
 
 import Card from "./Card.jsx";
+import allCardsStyle from "./styles/AllCards.css";
 
 const AllCards = () => {
 
@@ -15,7 +16,7 @@ const AllCards = () => {
 	let AllCountries = useSelector((state) => state.countries);
 
 	return (
-		<div>
+		<div className="container-cards">
 			{
 				AllCountries?.map((countrie) => (
 					<Card 

@@ -1,5 +1,6 @@
 const GET_COUNTRIES = "GET_COUNTRIES";
 const FILTER_CONTINENT = "FILTER_CONTINENT";
+const GET_COUNTRIES_NAME = "GET_COUNTRIES_NAME";
 
 const initialState = {
   countriesOrigin: [],
@@ -15,6 +16,19 @@ const rootReducer = (state = initialState, action) => {
         countriesOrigin: [...action.payload],
         //Y este para aplicar los filtros
         countries: action.payload
+      }
+
+    case GET_COUNTRIES_NAME:
+      let dataName = [...state.countriesOrigin];
+      let filterContinentName = [];
+      if(action.payload.length > 0){
+        filterContinentName = dataName?.filter(countrie => countrie.name.toLowerCase().includes(action.payload.toLowerCase()))
+      }else{
+        filterContinentName = [...dataName];
+      }
+      return {
+        ...state,
+        countries: filterContinentName,
       }
 
     case FILTER_CONTINENT:
