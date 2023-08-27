@@ -1,0 +1,95 @@
+.form {
+	display: flex;
+	flex-wrap: wrap;
+	max-width: 1280px;
+	width: 100%;
+	font-family: Poppins;
+	margin: 0 auto;
+}
+.form .container-countries-search .search-input {
+	border: none;
+	height: 30px;
+	border-radius: 5px;
+	margin-bottom: 10px;
+}
+.form .container-countries-search {
+	display: flex;
+	margin: 0 auto;
+	flex-direction: column;
+}
+.form .container-countries-search .bg-countries-name {
+	display: flex;
+	flex-direction: column;
+	height: 400px;
+	padding: 20px;
+	min-width: 400px;
+	overflow-y: scroll;
+}
+.name-countrie {
+	transition: 1s;
+}
+.name-countrie:hover {
+	transition: .3s;
+	transform: scale(1.1);
+}
+
+.form .container-inputs {
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+}
+
+.form .container-inputs div {
+	display: flex;
+	align-items: center;
+	margin: 10px 0;
+}
+.form .container-inputs div label {
+	display: flex;
+	align-items: center;
+	margin: 0 10px;
+}
+.form .container-inputs div label input {
+	margin-right: 5px;
+	margin-left: 10px;
+}
+.form .container-inputs input {
+	height: 30px;
+	border: none;
+}
+.form .container-inputs .container-season-diffic {
+	display: flex;
+	flex-direction: column;
+	align-items: normal;
+}
+
+.form .container-inputs .container-season-diffic .difficulty {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.btn-create {
+	transition: .5s;
+	width: 150px;
+	cursor: pointer;
+	margin: 0 auto;
+	height: 35px;
+	border: none;
+	font-family: Poppins;
+	font-weight: bold;
+	color: white;
+	background: none;
+	border: 2px solid white;
+	border-radius: 10px;
+}
+
+.btn-create:hover {
+	transition: .3s;
+	transform: scale(1.1);
+}
+
+@media (max-width: 935px){
+	.form {
+		max-height: max-content;
+	}
+}
