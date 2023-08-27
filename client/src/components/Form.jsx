@@ -6,6 +6,8 @@ import { getCountries } from "../redux/action";
 
 import swal from "sweetalert";
 
+import styleForm from "./styles/Form.css";
+
 const Form = () => {
 
 	const dispatch = useDispatch();
@@ -22,9 +24,9 @@ const Form = () => {
 
 	const [dataForm, setDataForm] = useState({
 		name: '',
-		durationHs: '',
-		durationMin: '',
-		difficulty: '',
+		durationHs: '00',
+		durationMin: '00',
+		difficulty: '1',
 		season: [],
 		CountryId: [],
 	})
@@ -40,7 +42,6 @@ const Form = () => {
 	}
 
 	const handleInputs = (event) => {
-		console.log(dataForm.difficulty)
 		let value = event.target.name;
 
 		if(value !== 'CountryId' && value !== 'season'){
@@ -89,7 +90,7 @@ const Form = () => {
 
 		axios.post("http://localhost:3002/activity", {
 			name: dataForm.name,
-			duration: dataForm.durationHs + " hs" + dataForm.durationMin + " min",
+			duration: dataForm.durationHs + " hs " + dataForm.durationMin + " min",
 			difficulty: dataForm.difficulty,
 			season: dataForm.season,
 			CountryId: dataForm.CountryId
@@ -104,29 +105,36 @@ const Form = () => {
 		event.target.reset();
 		setDataForm({
 		name: '',
-		durationHs: '',
-		durationMin: '',
-		difficulty: '',
+		durationHs: '00',
+		durationMin: '00',
+		difficulty: '1',
 		season: [],
 		CountryId: [],
 	});
 	}
 
 	return (
-		<form onSubmit={(event) => handleSubmit(event)}>
-			<div>
-			<input onChange={searchCountrie}/>
+		<form onSubmit={(event) => handleSubmit(event)} className="form">
+			<div className="container-countries-search">
+			<input className="search-input" onChange={searchCountrie}/>
+				<div className="bg-countries-name">
 				{
-					filterCountrie?.map((countrie) => (<label key={countrie.id}><input onChange={handleInputs} name="CountryId" type="checkbox" value={countrie.id}/> {countrie.name}</label>))
+					filterCountrie?.map((countrie) => (<label className="name-countrie" key={countrie.id}><input onChange={handleInputs} name="CountryId" type="checkbox" value={countrie.id}/> {countrie.name}</label>))
 				}
+				</div>
 			</div>
 
-			<div>
-				<label>Nombre <input onChange={handleInputs} type="text" name="name"/></label>
-				<label>Duracion <input onChange={handleInputs} type="text" name="durationHs"/> hs <input onChange={handleInputs} type="text" name="durationMin"/> min</label>
-			</div>
+			<div className="container-inputs">
+				<div>
+				<label>Nombre: <input onChange={handleInputs} type="text" name="name"/></label>
+				</div>
+				<div>
+					<label>Duracion: <input onChange={handleInputs} type="text" name="durationHs"/> hs <input onChange={handleInputs} type="text" name="durationMin"/> min</label>
+				</div>
 
-			<div>
+			<div className='container-season-diffic'>
+			<div className="difficulty">
+				<span>Dificultad: </span>
 				<label><input onChange={handleInputs} name="difficulty" type="radio" value="1"/> 1</label>
 				<label><input onChange={handleInputs} name="difficulty" type="radio" value="2"/> 2</label>	
 				<label><input onChange={handleInputs} name="difficulty" type="radio" value="3"/> 3</label>	
@@ -134,14 +142,17 @@ const Form = () => {
 				<label><input onChange={handleInputs} name="difficulty" type="radio" value="5"/> 5</label>		
 			</div>
 
-			<div>
+			<div className="season">
+			<span>Temporada: </span>
 				<label><input onChange={handleInputs} type="checkbox" name="season" value="Verano"/> Verano</label>
 				<label><input onChange={handleInputs} type="checkbox" name="season" value="Invierno"/> Invierno</label>
 				<label><input onChange={handleInputs} type="checkbox" name="season" value="Otoño"/> Otoño</label>
 				<label><input onChange={handleInputs} type="checkbox" name="season" value="Primavera"/> Primavera</label>
 			</div>
 
-			<button type='submit'>Crear</button>
+			</div>
+			<button className="btn-create" type='submit'>Crear</button>
+			</div>
 		</form>
 	)
 }

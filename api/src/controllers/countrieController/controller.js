@@ -11,7 +11,7 @@ const getApiCountries = async () => {
       continent: e.continents[0],
       capital: e.capital ? e.capital[0] : "Dato no encontrado",
       timezones: e.timezones[0] ? e.timezones[0] : "Dato no encontrado",
-      population: e.population ? e.population : "0",
+      population: e.population ? e.population : 0,
       region: e.region ? e.region : "Dato no encontrado",
       area: e.area ? e.area : "Dato no encontrado",
       subregion: e.subregion ? e.subregion : "Dato no encontrado",

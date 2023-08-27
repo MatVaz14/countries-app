@@ -5,6 +5,8 @@ const FILTER_CONTINENT = "FILTER_CONTINENT";
 const FILTER_POPULATION = "FILTER_POPULATION";
 const FILTER_ALPH = "FILTER_ALPH";
 const GET_COUNTRIES_NAME = "GET_COUNTRIES_NAME";
+const GET_LAST_STATE_COUNTRIES = "GET_LAST_STATE_COUNTRIES";
+
 
 export const getCountries = () => {
   return function (dispatch) {
@@ -14,6 +16,18 @@ export const getCountries = () => {
       .then((data) => dispatch({ type: GET_COUNTRIES, payload: data })); //hacemos el dispatch y la action va al reducer, el reducer la recibe y ya trabajamos con la info
   };
 };
+
+export const getLastStateCountries = () => {
+  return function(dispatch) {
+    dispatch({type: GET_LAST_STATE_COUNTRIES})
+  }
+}
+
+export const stateCountries = () => {
+  return function(dispatch) {
+    dispatch({type: GET_FINAL_STATE, payload})
+  }
+}
 
 export const searchName = (name) => {
   return function(dispatch) {

@@ -5,7 +5,7 @@ import Filter from "./Filter.jsx";
 import Navbar from "./Navbar.jsx";
 import Form from "./Filter.jsx";
 import Search from "./Filter.jsx";
-
+import Paginate from "./Paginate.jsx";
 export {
 	Card,
 	AllCards,
@@ -14,4 +14,5 @@ export {
 	Navbar,
 	Form,
 	Search,
+	Paginate
 }

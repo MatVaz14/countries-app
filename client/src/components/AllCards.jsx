@@ -1,24 +1,26 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCountries } from "../redux/action";
+import { getCountries,getLastStateCountries } from "../redux/action";
 
 import Card from "./Card.jsx";
 import allCardsStyle from "./styles/AllCards.css";
 
+import Paginate from "./Paginate.jsx";
+
 const AllCards = () => {
 
 	const dispatch = useDispatch();
+	let lastStateCountries = useSelector((state) => state.lastStateCountries);
 
-	useEffect(() => {
-		dispatch(getCountries());
+		useEffect(() => {
+			dispatch(getCountries());
 	},[])
 
-	let AllCountries = useSelector((state) => state.countries);
-
 	return (
+		<div>
 		<div className="container-cards">
 			{
-				AllCountries?.map((countrie) => (
+				lastStateCountries?.map((countrie) => (
 					<Card 
 					key={countrie.id}
 					id={countrie.id}
@@ -26,6 +28,7 @@ const AllCards = () => {
 					name={countrie.name}/>
 				))
 			}
+		</div>
 		</div>
 	)
 }
