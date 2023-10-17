@@ -2,7 +2,8 @@
     position: relative;
     max-width: 1350px;
     margin: 0 auto;
-    height: 720px;
+    height: 100vh;
+	max-height: 1080px;
 }
 
 .section_Home .blue__gradientHome {
@@ -34,4 +35,10 @@
     height: 230px;
       filter: blur(130px);
       z-index: -50;
+}
+@media (max-width: 720px){
+	.section_Home {
+		height: 100vh!important;
+		max-height: max-content;
+	}
 }
