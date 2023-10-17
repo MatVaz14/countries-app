@@ -1,25 +1,30 @@
-import { lazy, Suspense } from 'react';
-import { Link } from 'react-router-dom';
-import { Navbar, Filter } from "../components";
+import { Navbar, AllCard, Paginate, Loading, Filter } from "../components";
+import { useStore } from "../store/StoreProvider.js";
 
-const AllCards = lazy(() => import('../components/AllCards.jsx'));
+import "./styles/Home.css";
 
 const Home = () => {
-	return (
-		<section>
-			<div>
-				<Navbar />
-			<div>
-				<Filter />
-			</div>
-			</div>
-			<div>
-				<Suspense fallback={<h1>Cargando ...</h1>}>
-					<AllCards />
-				</Suspense>
-			</div>
-		</section>
-	)
-}
+  const store = useStore();
+
+  const { isLoading } = store;
+
+  return (
+    <section className="section_Home">
+      <div className="blue__gradientHome" />
+      <div className="celeste__gradientHome" />
+      <div className="pink__gradientHome" />
+      <Navbar page={0} />
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <>
+          <Filter />
+          <Paginate />
+          <AllCard />
+        </>
+      )}
+    </section>
+  );
+};
 
 export default Home;

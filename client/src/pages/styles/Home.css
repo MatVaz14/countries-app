@@ -1,0 +1,37 @@
+.section_Home {
+    position: relative;
+    max-width: 1350px;
+    margin: 0 auto;
+    height: 720px;
+}
+
+.section_Home .blue__gradientHome {
+	position: absolute;
+	top: 100px;
+	right: 0;
+	width: 400px;
+	height: 400px;
+  	background: linear-gradient(180deg, rgba(188, 165, 255, 0) 0%, #071D45 100%);
+  	filter: blur(130px);
+  	z-index: -100;
+}
+.section_Home .celeste__gradientHome {
+	position: absolute;
+	bottom: 10vh;
+	left: 0px;
+	width: 230px;
+	height: 230px;
+  	background: rgb(0, 152, 161);
+  	filter: blur(170px);
+  	z-index: -50;
+}
+.section_Home .pink__gradientHome {
+    position: absolute;
+    top: 50vh;
+    left: 40%;
+      background: #28023A;
+      width: 230px;
+    height: 230px;
+      filter: blur(130px);
+      z-index: -50;
+}

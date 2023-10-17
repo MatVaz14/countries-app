@@ -1,18 +1,34 @@
-import { Route } from "react-router-dom";
-import { Home, Detail, Create } from "./pages";
-
-import {lazy, Suspense} from 'react';
-const Landing = lazy(() => import("./pages/Landing.jsx"));
-
+import React, { useEffect, useState } from "react";
+import { Route, Redirect, Switch, useHistory } from "react-router-dom";
+import { Landing, Home, Activity, Detail } from "./pages";
 const App = () => {
+  const history = useHistory();
+  const [isReloading, setIsReloading] = useState(true);
+
+  useEffect(() => {
+    if (isReloading) {
+      setIsReloading(false);
+
+      history.push("/");
+    }
+  }, [isReloading, history]);
+
+  useEffect(() => {
+    window.onload = () => {
+      setIsReloading(true);
+    };
+  }, []);
   return (
-    <div>
-      <Route exact path="/" render={() => <Suspense fallback={<h1>Loading...</h1>}><Landing /></Suspense>} />
-      <Route exact path="/home" render={() => <Home /> }/>
-      <Route exact path="/detail/:id" render={() => <Detail />} />
-      <Route exact path="/create" render={() => <Create />} />
-    </div>
-  )
-}
+    <>
+      <Switch>
+        <Route exact path="/" render={() => <Landing />} />
+        <Route exact path="/home" render={() => <Home />} />
+        <Route exact path="/detail/:id" render={() => <Detail />} />
+        <Route exact path="/activity" render={() => <Activity />} />
+        <Redirect to="/" />
+      </Switch>
+    </>
+  );
+};
 
 export default App;

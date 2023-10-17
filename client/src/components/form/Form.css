@@ -1,0 +1,92 @@
+form {
+    display: flex;
+    flex-wrap: wrap!important;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid white;
+    border-radius: 10px;
+    width: max-content;
+    padding: 20px 50px;
+    margin: 20px auto;
+}
+form select, form select option, form button {
+    color: black;
+    font-weight: bolder;
+}
+form .container_Inputs {
+    display: flex;
+    flex-direction: column;
+}
+form .container_Inputs .gapOne_Inputs .gapOne_Article {
+    display: flex;
+    justify-content: space-between;
+}
+form .container_Inputs .gapOne_Inputs .gapOne_Article article {
+    margin: 10px;
+    padding: 10px 20px;
+    border: 1px solid white;
+    border-radius: 5px;
+}
+form .container_Inputs .gapOne_Inputs .gapOne_Article article h4 {
+    margin-top: 0;
+    margin-bottom: 0px;
+}
+form .container_Inputs .gapOne_Inputs .gapOne_Article input {
+    color: black;
+    font-weight: bolder;
+}
+form .container_Inputs .gapOne_Inputs .gapOne_Article .duration_Input {
+    width: 50px;
+}
+form .container_Inputs .gapOne_Inputs .gapTwo_Article {
+    width: 100%;
+}
+form .container_Inputs .gapTwo_Inptus select{
+    cursor: pointer;
+    width: 100%;
+    padding: 5px 10px;
+    border-radius: 5px;
+    height: 35px;
+    border: 1px solid white;
+    color: white;
+    background: none;
+    margin: 10px auto;
+}
+form .container_Inputs .gapTwo_Inptus select option {
+    background-color: #030011;
+    color: white;
+}
+form .container_CountrieOption {
+    display: flex;
+    flex-direction: column;
+    height: 450px;
+    width: 300px;
+    overflow-y: scroll;
+}
+form button {
+    transition: .5s;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 10px;
+    width: 100px;
+    height: 30px;
+    font-size: 18px;
+    border: 1px solid white;
+    color: white;
+    background: none;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+form button:hover {
+    transition: .3s;
+    transform: scale(1.05);
+}
+form .desactive {
+    opacity: 50%;
+    cursor: no-drop;
+}
+form .error {
+    color: red;
+}

@@ -1,35 +1,39 @@
-import searchStyle from "./styles/Search.css";
+import { useState } from "react";
+import { useStore, useDispatch } from "../store/StoreProvider.js";
 
-import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from 'react-redux';
-import { searchName,getCountries } from "../redux/action";
+import "./styles/Search.css";
 
 const Search = () => {
+  const dispatch = useDispatch();
+  const store = useStore();
+  const { cantPerPage } = store;
+  const [name, setName] = useState("");
 
-	const dispatch = useDispatch();
+  const handleChange = (event) => {
+    const newName = event.target.value;
+    setName(newName); // Actualiza el estado con el nuevo valor
+    if (newName.length === 0) {
+      dispatch({ type: "PAGE", payload: 1 });
+      dispatch({ type: "INDEX", payload: [0, cantPerPage] });
+      dispatch({ type: "INDEX_BTN", payload: [0, 5] });
+      dispatch({ type: "SEARCH", payload: "" });
+    } else {
+      dispatch({ type: "PAGE", payload: 1 });
+      dispatch({ type: "INDEX", payload: [0, cantPerPage] });
+      dispatch({ type: "INDEX_BTN", payload: [0, 5] });
+      dispatch({ type: "SEARCH", payload: name });
+    }
+  };
 
-	const [name, setName] = useState('');
-
-	const handleInput = (event) => {
-		setName(event.target.value)
-	} 
-
-	useEffect(() => {
-		console.log(name)
-		if(name.length === 0){
-			dispatch(getCountries());
-			return;
-		}
-		if(name.length >= 1){
-			dispatch(searchName(name))
-		}
-	},[name])
-
-	return (
-		<div>
-			<input className="style-input-name" placeholder="Buscar pais (en inglés)" onChange={handleInput} name="search"/>
-		</div>
-	)
-}
+  return (
+    <div className="container_Search">
+      <input
+        onChange={handleChange}
+        placeholder="Search Country..."
+        type="text"
+      />
+    </div>
+  );
+};
 
 export default Search;
